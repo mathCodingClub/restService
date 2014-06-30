@@ -2,7 +2,7 @@
 
 namespace WS;
 
-require_once PATH_GITHUB . 'weather/Weather.php';
+require_once PATH_GITHUB . 'mathCodingClub/weather/Weather.php';
 
 use \WS\annotations as WSann;
 
@@ -13,7 +13,7 @@ class Weather extends service {
   public function __construct($app, $path) {
     parent::__construct($app, $path, true);
   }
-  
+
   /**
    * @WSann\HelpTxt("Returns weather for city, country, state (default location is Tampere)")
    */

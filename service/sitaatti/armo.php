@@ -5,7 +5,7 @@ namespace WS;
 // use web service annotations as ann
 use \WS\annotations as WSann;
 
-require_once PATH_GITHUB . 'armo/armo.php';
+require_once PATH_GITHUB . 'mathCodingClub/armo/armo.php';
 
 class armo extends service {
 
