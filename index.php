@@ -4,6 +4,8 @@
 // (c) Antti Stenvall
 // antti@stenvall.fi
 //
+error_reporting(E_ALL);
+@ini_set('display_errors', '1');
 
 if ($_SERVER['SERVER_NAME'] == 'dev.localhost') {
   // local development services
@@ -21,16 +23,16 @@ define('PATH_GITREST', PATH_GITHUB . 'mathCodingClub/restService/');
 define('PATH_BITREST', PATH_BITBUCKET . 'mathCodingClub/restservice/');
 
 // Composer auto load (see composer.json)
-require_once GITREST . 'vendor/autoload.php';
+require_once PATH_GITREST . 'vendor/autoload.php';
 
 // init slim app
 $app = new \Slim\Slim();
 
 // github includes
-require_once PATH_GITHUB . 'slimClass/service.php';
-require_once PATH_GITHUB . 'servicesAnnotations/index.php';
+require_once PATH_GITHUB . 'mathCodingClub/slimClass/service.php';
+require_once PATH_GITHUB . 'mathCodingClub/serviceAnnotations/index.php';
 
-require_once GIT_REST . '/service/sitaatti/armo.php';
+require_once PATH_GITREST . 'service/sitaatti/armo.php';
 new \WS\armo($app, '/quote');
 // require_once GIT_REST . '/service/weather/Weather.php';
 // new \WS\Weather($app, '/saa');
