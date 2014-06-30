@@ -11,16 +11,19 @@ if ($_SERVER['SERVER_NAME'] == 'dev.localhost') {
   // local development services
   error_reporting(E_ALL);
   @ini_set('display_errors', '1');
-  define('PATH_GITHUB', '/Users/stenvala/htdocs/mcc-github-rest/');
-  define('PATH_BITBUCKET', '/Users/stenvala/htdocs/mcc-bitbucket-rest/');
+  define('PATH_GITHUB', '/Users/stenvala/htdocs/github/');
+  define('PATH_BITBUCKET', '/Users/stenvala/htdocs/bitbucket/');
 } elseif ($_SERVER['SERVER_NAME'] == 'access.localhost') {
   die("Acce's local development");
 } else {
   define('PATH_GITHUB', '/var/repos/github/');
   define('PATH_BITBUCKET', '/var/repos/bitbucket/');
 }
-define('PATH_GITREST', PATH_GITHUB . 'mathCodingClub/restService/');
-define('PATH_BITREST', PATH_BITBUCKET . 'mathCodingClub/restservice/');
+define('PATH_GITMCC',PATH_GITHUB . 'mathCodingClub/');
+define('PATH_BITMCC',PATH_BITBUCKET . 'mathCodingClub/');
+
+define('PATH_GITREST', PATH_GITMCC . 'restService/');
+define('PATH_BITREST', PATH_BITMCC . 'restservice/');
 
 // Composer auto load (see composer.json)
 require_once PATH_GITREST . 'vendor/autoload.php';
@@ -29,13 +32,13 @@ require_once PATH_GITREST . 'vendor/autoload.php';
 $app = new \Slim\Slim();
 
 // github includes
-require_once PATH_GITHUB . 'mathCodingClub/slimClass/service.php';
-require_once PATH_GITHUB . 'mathCodingClub/serviceAnnotations/index.php';
+require_once PATH_GITMCC . 'slimClass/service.php';
+require_once PATH_GITMCC . 'serviceAnnotations/index.php';
 
 require_once PATH_GITREST . 'service/sitaatti/armo.php';
 new \WS\armo($app, '/quote');
-// require_once GIT_REST . '/service/weather/Weather.php';
-// new \WS\Weather($app, '/saa');
+require_once PATH_GITREST . '/service/weather/Weather.php';
+new \WS\Weather($app, '/saa');
 
 /*
 // REFACTORING IN PROCESS
