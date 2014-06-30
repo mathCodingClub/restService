@@ -35,17 +35,20 @@ $app = new \Slim\Slim();
 require_once PATH_GITMCC . 'slimClass/service.php';
 require_once PATH_GITMCC . 'serviceAnnotations/index.php';
 
-require_once PATH_GITREST . 'service/sitaatti/armo.php';
+require_once PATH_GITREST . 'service/armo/armo.php';
 new \WS\armo($app, '/quote');
-require_once PATH_GITREST . '/service/weather/Weather.php';
+require_once PATH_GITREST . 'service/weather/Weather.php';
 new \WS\Weather($app, '/saa');
+
+require_once PATH_GITREST . 'service/tekstari/tekstari.php';
+new \WS\tekstari($app, '/txt');
+
 
 /*
 // REFACTORING IN PROCESS
 // bitbucket includes
 // github webservices
-require_once GITREST . 'txt/tekstari.php';
-new \WS\tekstari($app, '/txt');
+
 
 require_once GITREST . 'laatulehti/laatulehti.php';
 new \WS\laatulehti($app, '/laatulehti');
