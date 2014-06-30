@@ -19,8 +19,8 @@ if ($_SERVER['SERVER_NAME'] == 'dev.localhost') {
   define('PATH_GITHUB', '/var/repos/github/');
   define('PATH_BITBUCKET', '/var/repos/bitbucket/');
 }
-define('PATH_GITMCC',PATH_GITHUB . 'mathCodingClub/');
-define('PATH_BITMCC',PATH_BITBUCKET . 'mathCodingClub/');
+define('PATH_GITMCC', PATH_GITHUB . 'mathCodingClub/');
+define('PATH_BITMCC', PATH_BITBUCKET . 'mathCodingClub/');
 
 define('PATH_GITREST', PATH_GITMCC . 'restService/');
 define('PATH_BITREST', PATH_BITMCC . 'restservice/');
@@ -44,20 +44,33 @@ require_once PATH_GITREST . 'service/tekstari/tekstari.php';
 new \WS\tekstari($app, '/txt');
 
 
+$app->get('/test/', function() use ($app) {
+    $routes = $app->router()->getNamedRoutes();
+    print 'keke';
+    print $routes->count();
+    print count($routes);
+    foreach ($routes as $route) {
+      echo "{$route->getName()} : {$route->getPattern()}";
+    }
+    exit;
+  });
+
+
+
 /*
-// REFACTORING IN PROCESS
-// bitbucket includes
-// github webservices
+  // REFACTORING IN PROCESS
+  // bitbucket includes
+  // github webservices
 
 
-require_once GITREST . 'laatulehti/laatulehti.php';
-new \WS\laatulehti($app, '/laatulehti');
+  require_once GITREST . 'laatulehti/laatulehti.php';
+  new \WS\laatulehti($app, '/laatulehti');
 
-// bitbucket webservices
-require_once BITREST . 'location/location.php';
-new \WS\location($app, '/location');
+  // bitbucket webservices
+  require_once BITREST . 'location/location.php';
+  new \WS\location($app, '/location');
 
-*/
+ */
 
 // run slim app
 
