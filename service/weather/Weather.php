@@ -11,7 +11,7 @@ class Weather extends service {
   private $weather;
 
   public function __construct($app, $path) {
-    parent::__construct($app, $path, true);
+    parent::__construct($app, $path);
   }
 
   /**

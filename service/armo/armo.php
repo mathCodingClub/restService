@@ -13,7 +13,7 @@ class armo extends service {
 
   public function __construct($app, $path) {
     // true in last parameter automatically maps public methods to rest
-    parent::__construct($app, $path, true);
+    parent::__construct($app, $path);
   }
 
   // maps to path/temp/set/dummy/:a/:b/:c(/:d(/:e))
@@ -24,7 +24,7 @@ class armo extends service {
   /**
    * @WSann\HelpTxt("Returns random citation, provide ind to get specific")
    */
-  public function get($user, $ind = null) {
+  public function get($user='armo', $ind = null) {
     try {
       $this->armo = new \armo($user);
       $this->setCT(self::CT_PLAIN);

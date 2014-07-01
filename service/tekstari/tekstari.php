@@ -10,13 +10,13 @@ require_once PATH_GITHUB . 'stenvala/tekstari/tekstari.php';
 class tekstari extends service {
 
   public function __construct($app, $path) {
-    parent::__construct($app, $path, true);
+    parent::__construct($app, $path);
   }
 
   /**
    * @WSann\HelpTxt("Returns requested page, provide keyword if you want to get only lines matching it from the page")
    */
-  public function get($page, $keyword = null) {
+  public function get($page=201, $keyword = null) {
     $this->setCT(self::CT_PLAIN);
     try {
       $t = new \tekstari($page);
