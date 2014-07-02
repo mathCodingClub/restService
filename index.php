@@ -24,39 +24,29 @@ require_once PATH_GITRESTS . 'tekstari/tekstari.php';
 new \WS\tekstari($app, '/txt');
 
 /*
-$app->get('/test/', function() use ($app) {
-    $routes = $app->router()->getNamedRoutes();
-    print 'keke';
-    print $routes->count();
-    print count($routes);
-    foreach ($routes as $route) {
-      echo "{$route->getName()} : {$route->getPattern()}";
-    }
-    exit;
+  $app->get('/test/', function() use ($app) {
+  $routes = $app->router()->getNamedRoutes();
+  print 'keke';
+  print $routes->count();
+  print count($routes);
+  foreach ($routes as $route) {
+  echo "{$route->getName()} : {$route->getPattern()}";
+  }
+  exit;
   });
-*/
-
-  // bitbucket webservices
-  require_once PATH_BITRESTS . 'location/location.php';
-  new \WS\location($app, '/location');
-
-
-/*
-  // REFACTORING IN PROCESS
-  // bitbucket includes
-  // github webservices
-
-
-  require_once GITREST . 'laatulehti/laatulehti.php';
-  new \WS\laatulehti($app, '/laatulehti');
-
-
-
  */
+
+require_once PATH_GITRESTS . 'laatulehti/laatulehti.php';
+new \WS\laatulehti($app, '/laatulehti');
+
+
+// bitbucket webservices
+require_once PATH_BITRESTS . 'location/location.php';
+new \WS\location($app, '/location');
 
 // keep this last and extend it to automatically crawle all the routes of $app
 require_once PATH_GITRESTS . 'root/root.php';
-new \WS\root($app,'/');
+new \WS\root($app, '/');
 
 // run slim app
 
