@@ -23,18 +23,18 @@ new \WS\Weather($app, '/saa');
 require_once PATH_GITRESTS . 'tekstari/tekstari.php';
 new \WS\tekstari($app, '/txt');
 
-/*
-  $app->get('/test/', function() use ($app) {
-  $routes = $app->router()->getNamedRoutes();
-  print 'keke';
-  print $routes->count();
-  print count($routes);
-  foreach ($routes as $route) {
-  echo "{$route->getName()} : {$route->getPattern()}";
+$app->get('/test', function() use ($app) {  
+  $app->response()->headers->set('Content-Type', 'text/plain');  
+  $routes = $app->router()->getNamedRoutes();    
+  $cont = '';
+  foreach ($routes as $route) {    
+    $cont .= $route->getName() . ': ' . $route->getPattern() . PHP_EOL;
   }
+  echo $cont;
+  $app->response()->body($cont);
   exit;
-  });
- */
+});
+
 
 require_once PATH_GITRESTS . 'laatulehti/laatulehti.php';
 new \WS\laatulehti($app, '/laatulehti');
