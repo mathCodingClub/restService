@@ -23,6 +23,10 @@ new \WS\root($app, '/');
 // github webservices
 require_once PATH_GITRESTS . 'armo/armo.php';
 new \WS\armo($app, '/quote');
+
+require_once PATH_GITRESTS . 'lotto/Lotto.php';
+new \WS\Lotto($app, '/lotto');
+
 require_once PATH_GITRESTS . 'weather/Weather.php';
 new \WS\Weather($app, '/saa');
 
