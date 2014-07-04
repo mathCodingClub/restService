@@ -24,11 +24,11 @@ new \WS\root($app, '/');
 require_once PATH_GITRESTS . 'armo/armo.php';
 new \WS\armo($app, '/quote');
 
-require_once PATH_GITRESTS . 'lotto/Lotto.php';
-new \WS\Lotto($app, '/lotto');
-
 require_once PATH_GITRESTS . 'weather/Weather.php';
 new \WS\Weather($app, '/saa');
+
+require_once PATH_GITRESTS . 'lotto/Lotto.php';
+new \WS\Lotto($app, '/lotto');
 
 require_once PATH_GITRESTS . 'tekstari/tekstari.php';
 new \WS\tekstari($app, '/txt');
