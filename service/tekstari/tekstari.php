@@ -2,11 +2,14 @@
 
 namespace WS;
 
-// use web service annotations as ann
 use \WS\annotations as WSann;
 
 require_once PATH_GITHUB . 'stenvala/tekstari/tekstari.php';
 
+/**
+ * @WSann\serviceName("YLE Teksti-TV")
+ * @WSann\serviceDescription("Service for fetching YLE Teksti-TV pages.");
+ */
 class tekstari extends service {
 
   public function __construct($app, $path) {
@@ -14,9 +17,11 @@ class tekstari extends service {
   }
 
   /**
-   * @WSann\HelpTxt("Returns requested page, provide keyword if you want to get only lines matching it from the page")
+   * @WSann\routeDescription("Get page.")
+   * @WSann\routeVariable("page", type="int", desc="What page to get", default="201")
+   * @WSann\routeVariable("keyword", type="string", desc="Fetch only those lines having this keyword", default="null i.e. get all lines")
    */
-  public function get($page=201, $keyword = null) {
+  public function get($page = 201, $keyword = null) {
     $this->setCT(self::CT_PLAIN);
     try {
       $t = new \tekstari($page);

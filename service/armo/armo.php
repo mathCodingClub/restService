@@ -2,29 +2,33 @@
 
 namespace WS;
 
-// use web service annotations as ann
+require_once PATH_GITHUB . 'mathCodingClub/armo/armo.php';
+require_once PATH_ANNOTATIONS . 'serviceDescription.php';
+require_once PATH_ANNOTATIONS . 'serviceName.php';
+require_once PATH_ANNOTATIONS . 'routeDescription.php';
+require_once PATH_ANNOTATIONS . 'routeVariable.php';
+
 use \WS\annotations as WSann;
 
-require_once PATH_GITHUB . 'mathCodingClub/armo/armo.php';
-
+/**
+ * @WSann\serviceName("Armo")
+ * @WSann\serviceDescription("Get quotes of famous Finnish People.");
+ */
 class armo extends service {
 
   private $armo;
 
   public function __construct($app, $path) {
     // true in last parameter automatically maps public methods to rest
-    parent::__construct($app, $path);
-  }
-
-  // maps to path/temp/set/dummy/:a/:b/:c(/:d(/:e))
-  public function getTempSetDummy($a, $b, $c, $d = null, $e = 1) {
-
+    parent::__construct($app, $path, true, '/help');
   }
 
   /**
-   * @WSann\HelpTxt("Returns random citation, provide ind to get specific")
+   * @WSann\routeDescription("Get quote to cheer your day.")
+   * @WSann\routeVariable("user", type="string", desc="Who's quote to get", default="armo")
+   * @WSann\routeVariable("ind", type="int", desc="Get quote from specific index", default="null i.e. random")
    */
-  public function get($user='armo', $ind = null) {
+  public function get($user = 'armo', $ind = null) {
     try {
       $this->armo = new \armo($user);
       $this->setCT(self::CT_PLAIN);
@@ -35,7 +39,8 @@ class armo extends service {
   }
 
   /**
-   * @WSann\HelpTxt("Returns available persons, getAmounts also gives amounts of their citations")
+   * @WSann\routeDescription("Get available celebrities.")
+   * @WSann\routeVariable("getAmounts", type="bool", desc="Get also amount of quotes", default="false")
    */
   public function getHelp($getAmounts = null) {
     $this->setCT(self::CT_PLAIN);
@@ -43,6 +48,9 @@ class armo extends service {
     $this->response->body('Persons available: ' . implode(', ', $available));
   }
 
+  /**
+   * @WSann\routeDescription("Save new quote.")
+   */
   public function post() {
     $data = $this->getBodyAsJSON();
     try {
@@ -54,7 +62,15 @@ class armo extends service {
     }
   }
 
-  // other methods
+  /* ADD THIS FOR POST
+   * @WSann\postAccepts("application/json")
+   * @WSann\postStructure({
+   *  @WSann\postScalar("user", type="string", desc="Name of user", optional=false),
+   *  @WSann\postScalar("quote", type="string", desc="Quote to be saved", optional=false)
+   * })
+   */
+
+
 }
 
 ?>

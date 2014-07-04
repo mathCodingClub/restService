@@ -38,4 +38,6 @@ define('PATH_BITREST', PATH_BITMCC . 'restService/');
 define('PATH_GITRESTS', PATH_GITREST . 'service/');
 define('PATH_BITRESTS', PATH_BITREST . 'service/');
 
+define('PATH_ANNOTATIONS', PATH_GITMCC . 'serviceAnnotations/')
+
 ?>

@@ -6,16 +6,19 @@ require_once PATH_GITHUB . 'mathCodingClub/weather/Weather.php';
 
 use \WS\annotations as WSann;
 
+/**
+ * @WSann\serviceName("Weather")
+ * @WSann\serviceDescription("Service for fetching weather of a given location.");
+ */
 class Weather extends service {
 
   private $weather;
 
-  public function __construct($app, $path) {
-    parent::__construct($app, $path);
-  }
-
   /**
-   * @WSann\HelpTxt("Returns weather for city, country, state (default location is Tampere)")
+   * @WSann\routeDescription("Get weather.")
+   * @WSann\routeVariable("city", type="string", desc="City", default="null")
+   * @WSann\routeVariable("country", type="string", desc="Country", default="null")
+   * @WSann\routeVariable("state", type="string", desc="State (for USA)", default="null")
    */
   public function get($city = null, $country = null, $state = null) {
     $this->weather = new \Weather();
