@@ -20,6 +20,12 @@ switch ($serverName) {
     define('PATH_BITBUCKET', '/Users/stenvala/bitbucket/');
     break;
   case 'acce.localhost':
+  case 'acce.mathcodingclub.com':
+    error_reporting(E_ALL);
+    @ini_set('display_errors', '1');
+    define('PATH_GITHUB', '/home/acce/public_html/github/');
+    define('PATH_BITBUCKET', '/var/repos/bitbucket/');
+    break;
 
   default:
     @ini_set('display_errors', 0);
