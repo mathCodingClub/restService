@@ -6,7 +6,7 @@ require_once PATH_GITHUB . 'mathCodingClub/lotto/Lotto.php';
 
 use \WS\annotations as WSann;
 
-class Lotto extends service {
+class Lotto extends \slimClass\service {
 
   private $lotto;
 

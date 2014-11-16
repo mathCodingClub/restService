@@ -10,7 +10,7 @@ require_once PATH_GITHUB . 'stenvala/tekstari/tekstari.php';
  * @WSann\serviceName("YLE Teksti-TV")
  * @WSann\serviceDescription("Service for fetching YLE Teksti-TV pages.");
  */
-class tekstari extends service {
+class tekstari extends \slimClass\service {
 
   public function __construct($app, $path) {
     parent::__construct($app, $path);

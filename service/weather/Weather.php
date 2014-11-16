@@ -10,7 +10,7 @@ use \WS\annotations as WSann;
  * @WSann\serviceName("Weather")
  * @WSann\serviceDescription("Service for fetching weather of a given location.");
  */
-class Weather extends service {
+class Weather extends \slimClass\service {
 
   private $weather;
 

@@ -12,7 +12,7 @@ use \WS\annotations as WSann;
  * @WSann\serviceName("Laatulehti")
  * @WSann\serviceDescription("Service for fetching quality journals.");
  */
-class laatulehti extends service {
+class laatulehti extends \slimClass\service {
 
   public function __construct(\Slim\Slim $app,$path) {
     parent::__construct($app, $path);

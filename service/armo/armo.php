@@ -14,7 +14,7 @@ use \WS\annotations as WSann;
  * @WSann\serviceName("Armo")
  * @WSann\serviceDescription("Get quotes of famous Finnish People.");
  */
-class armo extends service {
+class armo extends \slimClass\service {
 
   private $armo;
 
