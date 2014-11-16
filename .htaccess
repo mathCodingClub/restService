@@ -1,10 +1,11 @@
-RewriteEngine On 
+RewriteEngine On
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{HTTP_HOST} ^(.*)\.mathcodingclub\.com$ [NC]
-RewriteCond %{REQUEST_URI} ^(.*)rest(.*)$
-RewriteRule ^(.*)$ %{DOCUMENT_ROOT}/%1/rest/index.php [QSA,L]
+#RewriteCond %{REQUEST_URI} ^(.*)\\(.*)$
+RewriteRule ^(.*)$ %{DOCUMENT_ROOT}/%2/index.php [QSA,L]
 
-RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{HTTP_HOST} ^localhost$ [NC]
 RewriteRule ^(.*)$ %{ENV:BASE}index.php [QSA,L]
+
