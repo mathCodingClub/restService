@@ -2,7 +2,7 @@
 
 namespace WS;
 
-use \WS\annotations as WSann;
+use \serviceAnnotations as WSann;
 
 require_once PATH_GITHUB . 'stenvala/tekstari/tekstari.php';
 

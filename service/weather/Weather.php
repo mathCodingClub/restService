@@ -4,7 +4,7 @@ namespace WS;
 
 require_once PATH_GITHUB . 'mathCodingClub/weather/Weather.php';
 
-use \WS\annotations as WSann;
+use \serviceAnnotations as WSann;
 
 /**
  * @WSann\serviceName("Weather")

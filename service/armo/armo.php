@@ -8,7 +8,7 @@ require_once PATH_ANNOTATIONS . 'serviceName.php';
 require_once PATH_ANNOTATIONS . 'routeDescription.php';
 require_once PATH_ANNOTATIONS . 'routeVariable.php';
 
-use \WS\annotations as WSann;
+use \serviceAnnotations as WSann;
 
 /**
  * @WSann\serviceName("Armo")

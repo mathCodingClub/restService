@@ -4,7 +4,7 @@ namespace WS;
 
 require_once PATH_GITHUB . 'mathCodingClub/lotto/Lotto.php';
 
-use \WS\annotations as WSann;
+use \serviceAnnotations as WSann;
 
 class Lotto extends \slimClass\service {
 

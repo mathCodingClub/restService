@@ -6,7 +6,7 @@ require_once PATH_ANNOTATIONS . 'serviceDescription.php';
 require_once PATH_ANNOTATIONS . 'serviceName.php';
 require_once PATH_ANNOTATIONS . 'routeDescription.php';
 
-use \WS\annotations as WSann;
+use \serviceAnnotations as WSann;
 
 /**
  * @WSann\serviceName("Laatulehti")

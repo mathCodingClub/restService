@@ -14,6 +14,7 @@ $serverName = $_SERVER['SERVER_NAME'];
 
 switch ($serverName) {
   case 'stenvala.osx.localhost':
+  case 'localhost':
     error_reporting(E_ALL);
     @ini_set('display_errors', '1');
     define('PATH_GITHUB', '/Users/stenvala/github/');
@@ -26,7 +27,6 @@ switch ($serverName) {
     define('PATH_GITHUB', '/home/acce/public_html/github/');
     define('PATH_BITBUCKET', '/var/repos/bitbucket/');
     break;
-
   default:
     @ini_set('display_errors', 0);
     define('PATH_GITHUB', '/var/repos/github/');
