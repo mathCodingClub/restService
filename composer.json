@@ -1,4 +1,5 @@
 {
+  "name": "mathCodingClub/slimClass",
   "require": {
     "slim/slim": "2.*",
     "doctrine/common": "*"
