@@ -23,13 +23,9 @@ class armo extends \slimClass\service {
    * @sa\routeVariable("ind", type="int", desc="Get quote from specific index", default="null i.e. random")
    */
   public function get($user = 'armo', $ind = null) {
-    try {
-      $this->armo = new \armo\armo($user);
-      $this->setCT(self::CT_PLAIN);
-      $this->response->body($this->armo->get($ind));
-    } catch (\Exception $e) {
-      $this->sendError($e);
-    }
+    $this->armo = new \armo\armo($user);
+    $this->setCT(self::CT_PLAIN);
+    $this->response->body($this->armo->get($ind));
   }
 
   /**
@@ -47,13 +43,9 @@ class armo extends \slimClass\service {
    */
   public function post() {
     $data = $this->getBodyAsJSON();
-    try {
-      \armo\armo::save($data['user'], $data['quote']);
-      $this->setCT(self::CT_PLAIN);
-      $this->response->body("New quote saved for {$data['user']}.");
-    } catch (\Exception $e) {
-      $this->sendError($e);
-    }
+    \armo\armo::save($data['user'], $data['quote']);
+    $this->setCT(self::CT_PLAIN);
+    $this->response->body("New quote saved for {$data['user']}.");
   }
 
   /* ADD THIS FOR POST
@@ -63,8 +55,6 @@ class armo extends \slimClass\service {
    *  @sa\postScalar("quote", type="string", desc="Quote to be saved", optional=false)
    * })
    */
-
-
 }
 
 ?>
