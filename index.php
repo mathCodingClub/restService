@@ -3,42 +3,28 @@
 // RESTful API @ MCC
 //
 
-require_once 'config.inc.php';
+date_default_timezone_set('UTC');
 
-// Composer auto load (see composer.json) update: composer update
-require_once PATH_GITREST . 'vendor/autoload.php';
+define('BASE', __DIR__ . '/');
 
-// init slim app
-$app = new \Slim\Slim();
+require_once BASE . 'vendor/mathCodingClub/serviceAnnotations/all.php';
+require_once BASE . 'vendor/autoload.php';
 
-// github includes commont for all services
-require_once PATH_GITMCC . 'slimClass/service.php';
-require_once PATH_GITMCC . 'slimClass/availableServices.php';
-require_once PATH_GITMCC . 'serviceAnnotations/all.php';
+$app = new \Slim\Slim(array('debug' => false));
 
-// help service, which describes the api
-require_once PATH_GITRESTS . 'root/root.php';
-new \WS\root($app, '/');
+$app->error(function(\Exception $e) use ($app) {
+  $app->halt($e->getCode(), $e->getMessage());
+});
 
-// github webservices
-require_once PATH_GITRESTS . 'armo/armo.php';
+// These are automatically loaded
 new \WS\armo($app, '/quote');
-
-require_once PATH_GITRESTS . 'weather/Weather.php';
 new \WS\Weather($app, '/saa');
-
-require_once PATH_GITRESTS . 'lotto/Lotto.php';
 new \WS\Lotto($app, '/lotto');
-
-require_once PATH_GITRESTS . 'tekstari/tekstari.php';
-new \WS\tekstari($app, '/txt');
-
-require_once PATH_GITRESTS . 'laatulehti/laatulehti.php';
+new \WS\tekstari($app, '/txt'); 
 new \WS\laatulehti($app, '/laatulehti');
 
-// bitbucket webservices
-require_once PATH_BITRESTS . 'location/location.php';
-new \WS\location($app, '/location');
+// bitbucket webservices bbWS just add dependency to composer.json, and it's all working
+new \bbWS\location($app, '/location');
 
 // run slim app
 $app->run();

@@ -1,7 +1,58 @@
 {
-  "name": "mathCodingClub/slimClass",
+  "name": "mathCodingClub/rest",
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/mathCodingClub/serviceAnnotations"
+    },
+    {
+      "type": "git",
+      "url": "https://github.com/mathCodingClub/slimClass"
+    },
+    {
+      "type": "git",
+      "url": "https://github.com/stenvala/tekstari"
+    },
+    {
+      "type": "git",
+      "url": "https://github.com/mathCodingClub/lotto"
+    },
+    {
+      "type": "git",
+      "url": "https://github.com/mathCodingClub/weather"
+    },
+    {
+      "type": "git",
+      "url": "https://github.com/mathCodingClub/armo"
+    },
+    {
+      "type": "git",
+      "url": "git@bitbucket.org:mathCodingClub/restService"
+    },
+    {
+      "type": "git",
+      "url": "git@bitbucket.org:mathCodingClub/database"
+    },
+    {
+      "type": "git",
+      "url": "git@bitbucket.org:mathCodingClub/location"
+    }
+  ],
   "require": {
     "slim/slim": "2.*",
-    "doctrine/common": "*"
-  }
+    "doctrine/common": "*",
+    "mathCodingClub/serviceAnnotations": "dev-master@dev",
+    "mathCodingClub/slimClass": "dev-master@dev",
+    "stenvala/tekstari": "dev-master@dev",
+    "mathCodingClub/Lotto": "dev-master@dev",
+    "mathCodingClub/Weather": "dev-master@dev",
+    "mathCodingClub/armo": "dev-master@dev",
+    "mathCodingClub/bbWS": "dev-master@dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "WS\\": "service\\"
+    }
+  },
+  "minimum-stability": "dev"
 }

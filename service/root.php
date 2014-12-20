@@ -3,14 +3,11 @@
 namespace WS;
 
 // use web service annotations as ann
-use \serviceAnnotations as WSann;
-
-// Add API description
-require_once PATH_GITMCC . 'slimClass/availableServices.php';
+use \serviceAnnotations as sa;
 
 /**
- * @WSann\serviceName("Guide of MCC REST API")
- * @WSann\serviceDescription("Funky services for funky people.");
+ * @sa\serviceName("Guide of MCC REST API")
+ * @sa\serviceDescription("Funky services for funky people.");
  */
 class root extends \slimClass\service {
 
@@ -19,7 +16,7 @@ class root extends \slimClass\service {
   }
 
   /**
-   * @WSann\routeDescription("Returns this guide.")
+   * @sa\routeDescription("Returns this guide.")
    */
   public function get() {
     $this->setCT(self::CT_PLAIN);
@@ -29,8 +26,8 @@ class root extends \slimClass\service {
   }
 
   /**
-   * @WSann\routeDescription("Get help of given service.")
-   * @WSann\routeVariable("service", type="string", desc="name of service")
+   * @sa\routeDescription("Get help of given service.")
+   * @sa\routeVariable("service", type="string", desc="name of service")
    */
   public function getHelp($servicePath){
     $this->setCT(self::CT_PLAIN);

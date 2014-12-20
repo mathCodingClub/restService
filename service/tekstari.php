@@ -2,13 +2,11 @@
 
 namespace WS;
 
-use \serviceAnnotations as WSann;
-
-require_once PATH_GITHUB . 'stenvala/tekstari/tekstari.php';
+use \serviceAnnotations as sa;
 
 /**
- * @WSann\serviceName("YLE Teksti-TV")
- * @WSann\serviceDescription("Service for fetching YLE Teksti-TV pages.");
+ * @sa\serviceName("YLE Teksti-TV")
+ * @sa\serviceDescription("Service for fetching YLE Teksti-TV pages.");
  */
 class tekstari extends \slimClass\service {
 
@@ -17,15 +15,15 @@ class tekstari extends \slimClass\service {
   }
 
   /**
-   * @WSann\routeDescription("Get page.")
-   * @WSann\routeVariable("page", type="int", desc="What page to get", default="201")
-   * @WSann\routeVariable("keyword", type="string", desc="Fetch only those lines having this keyword", default="null i.e. get all lines")
+   * @sa\routeDescription("Get page.")
+   * @sa\routeVariable("page", type="int", desc="What page to get", default="201")
+   * @sa\routeVariable("keyword", type="string", desc="Fetch only those lines having this keyword", default="null i.e. get all lines")
    */
   public function get($page = 201, $keyword = null) {
     $this->setCT(self::CT_PLAIN);
     try {
-      $t = new \tekstari($page);
-      $p = $t->getPage(\tekstari::GET_PLAIN);
+      $t = new \tekstari\tekstari($page);
+      $p = $t->getPage(\tekstari\tekstari::GET_PLAIN);
       if (is_null($keyword)) {
         $this->response->body($p);
       } else {
