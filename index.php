@@ -21,14 +21,14 @@ new \WS\root($app, '/');
 new \WS\armo($app, '/quote');
 new \WS\Weather($app, '/saa');
 new \WS\Lotto($app, '/lotto');
-new \WS\tekstari($app, '/txt'); 
+new \WS\tekstari($app, '/txt');
 new \WS\laatulehti($app, '/laatulehti');
 
 // bitbucket webservices bbWS
 new \bbWS\location($app, '/location');
-new \bbWS\preview($app, '/pre');
+new \bbWS\preview($app, '/pre', '/home/mcc/rest/preview');
 
 // run slim app
 $app->run();
 
-?>
+
