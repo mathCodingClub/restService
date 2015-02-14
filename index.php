@@ -26,7 +26,7 @@ new \WS\laatulehti($app, '/laatulehti');
 
 // bitbucket webservices bbWS
 new \bbWS\location($app, '/location');
-new \bbWS\preview($app, '/preview');
+new \bbWS\preview($app, '/pre');
 
 // run slim app
 $app->run();
