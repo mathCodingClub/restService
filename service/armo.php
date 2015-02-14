@@ -44,10 +44,8 @@ class armo extends \slimClass\service {
   public function post() {
     $data = $this->getBodyAsJSON();
     \armo\armo::save($data['user'], $data['quote']);
-    $this->setCT(self::CT_PLAIN);
-    throw new \Exception("BLII BLAA BLUU" . $data['user'] . $data['quote']);
-    $this->response->body("New quote saved for {$data['user']}.");
-    
+    $this->setCT(self::CT_PLAIN);    
+    $this->response->body("New quote saved for {$data['user']}.");   
   }
 
   /* ADD THIS FOR POST
