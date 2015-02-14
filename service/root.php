@@ -24,18 +24,9 @@ class root extends \slimClass\service {
     $data = $ws->getServicesAsTxt();
     $this->response->body($data);
   }
-
-  /**
-   * @sa\routeDescription("Get help of given service.")
-   * @sa\routeVariable("service", type="string", desc="name of service")
-   */
-  public function getHelp($servicePath){
-    $this->setCT(self::CT_PLAIN);
-    $ws = new \WS\availableServices();
-    $service = $ws->getServiceNameFromPath($servicePath);
-    $data = $ws->getServiceAsTxt($service);
-    $this->response->body($data);
-  }
+  
+  // Private
+  
 
 }
 

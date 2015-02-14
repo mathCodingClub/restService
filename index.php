@@ -16,15 +16,17 @@ $app->error(function(\Exception $e) use ($app) {
   $app->halt($e->getCode(), $e->getMessage());
 });
 
-// These are automatically loaded
+// These are automatically loaded from service
+new \WS\root($app, '/');
 new \WS\armo($app, '/quote');
 new \WS\Weather($app, '/saa');
 new \WS\Lotto($app, '/lotto');
 new \WS\tekstari($app, '/txt'); 
 new \WS\laatulehti($app, '/laatulehti');
 
-// bitbucket webservices bbWS just add dependency to composer.json, and it's all working
+// bitbucket webservices bbWS
 new \bbWS\location($app, '/location');
+new \bbWS\preview($app, '/preview');
 
 // run slim app
 $app->run();

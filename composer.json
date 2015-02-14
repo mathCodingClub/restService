@@ -36,6 +36,10 @@
     {
       "type": "git",
       "url": "git@bitbucket.org:mathCodingClub/location"
+    },
+    {
+      "type": "git",
+      "url": "git@bitbucket.org:mathCodingClub/web-preview"
     }
   ],
   "require": {
@@ -47,7 +51,8 @@
     "mathCodingClub/Lotto": "dev-master@dev",
     "mathCodingClub/Weather": "dev-master@dev",
     "mathCodingClub/armo": "dev-master@dev",
-    "mathCodingClub/bbWS": "dev-master@dev"
+    "mathCodingClub/bbWS": "dev-master@dev",
+    "mathCodingClub/web-preview": "dev-master@dev"
   },
   "autoload": {
     "psr-4": {
