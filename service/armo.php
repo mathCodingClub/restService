@@ -24,17 +24,14 @@ class armo extends \slimClass\service {
    */
   public function get($user = 'armo', $ind = null) {
     if ($user == 'who'){
-      $this->getHelp();      
+      $this->getHelp();    
+      return;
     }
     $this->armo = new \armo\armo($user);
     $this->setCT(self::CT_PLAIN);
     $this->response->body($this->armo->get($ind));
   }
-
-  /**
-   * @sa\routeDescription("Get available celebrities.")
-   * @sa\routeVariable("getAmounts", type="bool", desc="Get also amount of quotes", default="false")
-   */
+  
   private function getHelp() {
     $this->setCT(self::CT_PLAIN);
     $available = \armo\armo::available(true);
