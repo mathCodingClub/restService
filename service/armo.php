@@ -23,6 +23,9 @@ class armo extends \slimClass\service {
    * @sa\routeVariable("ind", type="int", desc="Get quote from specific index", default="null i.e. random")
    */
   public function get($user = 'armo', $ind = null) {
+    if ($user == 'who'){
+      $this->getHelp();      
+    }
     $this->armo = new \armo\armo($user);
     $this->setCT(self::CT_PLAIN);
     $this->response->body($this->armo->get($ind));
@@ -32,10 +35,10 @@ class armo extends \slimClass\service {
    * @sa\routeDescription("Get available celebrities.")
    * @sa\routeVariable("getAmounts", type="bool", desc="Get also amount of quotes", default="false")
    */
-  public function getHelp($getAmounts = null) {
+  private function getHelp() {
     $this->setCT(self::CT_PLAIN);
-    $available = \armo\armo::available(!is_null($getAmounts));
-    $this->response->body('Persons available: ' . implode(', ', $available));
+    $available = \armo\armo::available(true);
+    $this->response->body('Quotes available: ' . implode(', ', $available));
   }
 
   /**
