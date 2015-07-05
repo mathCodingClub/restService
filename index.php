@@ -22,7 +22,9 @@ new \WS\armo($app, '/quote');
 new \WS\Weather($app, '/saa');
 new \WS\Lotto($app, '/lotto');
 new \WS\tekstari($app, '/txt');
+new \WS\uptime($app, '/uptime');
 new \WS\laatulehti($app, '/laatulehti');
+
 
 // bitbucket webservices bbWS
 new \bbWS\location($app, '/location');
