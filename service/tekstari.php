@@ -25,11 +25,11 @@ class tekstari extends \slimClass\service {
    * @sa\routeVariable("keyword", type="string", desc="Fetch only those lines having this keyword", default="null i.e. get all lines")
    */
   public function getPage($page = 201, $keyword = null) {
-    $this->setCT(self::CT_PLAIN);
+    $accepts = $this->accepts();
     $t = new \tekstari\tekstari($page);
     $p = $t->getPage(\tekstari\tekstari::GET_PLAIN);
     if (is_null($keyword)) {
-      $this->response->body($p);
+      $ret = array('contents' => $p, 'page' => $page);
     } else {
       $res = array();
       $data = explode(PHP_EOL, $p);
@@ -41,8 +41,16 @@ class tekstari extends \slimClass\service {
       if (count($res) == 0) {
         throw new \Exception("Hakusanaa '$keyword' ei löydy sivulta '$page'", 410);
       }
-      $this->response->body(implode(PHP_EOL, $res));
+      $ret = array('contents' => implode(PHP_EOL, $res), 'page' => $page);
+    }
+    switch ($accepts) {
+      case self::CT_JSON:
+        $this->sendArrayAsJSON($ret);
+        return;
+      default:
+        $this->setCT(self::CT_PLAIN);
+        $this->response->body($ret['contents']);
     }
   }
-  
+
 }
