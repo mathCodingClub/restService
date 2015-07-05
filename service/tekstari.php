@@ -14,13 +14,17 @@ class tekstari extends \slimClass\service {
     parent::__construct($app, $path);
   }
 
+  public function getFav() {
+    $fav = \tekstari\tekstari::getFavorites();
+    $this->sendArrayAsJSON($fav);
+  }
+
   /**
    * @sa\routeDescription("Get page.")
    * @sa\routeVariable("page", type="int", desc="What page to get", default="201")
    * @sa\routeVariable("keyword", type="string", desc="Fetch only those lines having this keyword", default="null i.e. get all lines")
    */
-  
-  public function get($page = 201, $keyword = null) {
+  public function getPage($page = 201, $keyword = null) {
     $this->setCT(self::CT_PLAIN);
     $t = new \tekstari\tekstari($page);
     $p = $t->getPage(\tekstari\tekstari::GET_PLAIN);
@@ -41,8 +45,4 @@ class tekstari extends \slimClass\service {
     }
   }
   
-  public function getFav(){
-   $fav = \tekstari\tekstari::getFavorites();
-   $this->sendArrayAsJSON($fav);
-  }
 }
