@@ -40,6 +40,9 @@ class tekstari extends \slimClass\service {
       $this->response->body(implode(PHP_EOL, $res));
     }
   }
+  
+  public function getFav(){
+   $fav = \tekstari\tekstari::getFavorites();
+   $this->sendArrayAsJSON($fav);
+  }
 }
-
-?>
